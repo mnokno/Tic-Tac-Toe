@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
         {
             isHumanToMove = true;
         }
-
     }
 
     private void Update()
@@ -62,6 +61,26 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<AIInfoDisplayManager>().UpdateEval(AIMove.score);
             }
         }
+    }
+
+    public void Reset()
+    {
+        // Deletes old board
+        foreach (Transform container in transform)
+        {
+            foreach (Transform child in container)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+
+        // Create new TicTacToeBoard board
+        ticTacToeBoard = new TicTacToeBoard(dimensions, winLenght);
+        // Generates the UI elements and started the game
+        FindObjectOfType<BoardGenerator>().Start();
+        FindObjectOfType<InputManager>().Start();
+        FindObjectOfType<SymbolManager>().Start();
+        Start();
     }
 
     public void TryToMakeHumanMove(int x, int y)
@@ -130,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void MakeAIMove()
     {
-        // Only allows to make a move is the game is on
+        // Only allows to make a move if the game is on going
         if (ticTacToeBoard.gameState == TicTacToeBoard.GameState.GameOn)
         {
             Task t = new Task(() => MakeMoveUsing_AlphaBateAI());

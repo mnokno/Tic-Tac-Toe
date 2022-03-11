@@ -16,7 +16,7 @@ public class SymbolManager : MonoBehaviour
     private float scale;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         // Finds settings and gameManager
         settings = FindObjectOfType<BoardGenerator>().settings;

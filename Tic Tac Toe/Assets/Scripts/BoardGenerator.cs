@@ -13,7 +13,7 @@ public class BoardGenerator : MonoBehaviour
     private float scale;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         // Calculates scale
         scale = (settings.symbolSize * settings.dimensions) + (settings.lineWidth + settings.paddingLength * 2) * (settings.dimensions - 1);
