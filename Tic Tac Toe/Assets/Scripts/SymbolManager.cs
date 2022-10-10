@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SymbolManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SymbolManager : MonoBehaviour
     public Sprite noneSprite;
 
     public Transform container;
+    [SerializeField] private Image xColorRef;
+    [SerializeField] private Image oColorRef;
 
     private GameManager gameManager;
     private BoardGenerator.BoardUISettings settings;
@@ -78,10 +81,12 @@ public class SymbolManager : MonoBehaviour
                 else if (boardState[x, y] == TicTacToeBoard.SpaceState.X)
                 {
                     symbols[x, y].GetComponent<SpriteRenderer>().sprite = xSprite;
+                    symbols[x, y].GetComponent<SpriteRenderer>().color = xColorRef.color;
                 }
                 else if (boardState[x, y] == TicTacToeBoard.SpaceState.O)
                 {
                     symbols[x, y].GetComponent<SpriteRenderer>().sprite = oSprite;
+                    symbols[x, y].GetComponent<SpriteRenderer>().color = oColorRef.color;
                 }
             }
         }
@@ -101,10 +106,12 @@ public class SymbolManager : MonoBehaviour
             else if (to == TicTacToeBoard.SpaceState.X)
             {
                 symbols[x, y].GetComponent<SpriteRenderer>().sprite = xSprite;
+                symbols[x, y].GetComponent<SpriteRenderer>().color = xColorRef.color;
             }
             else if (to == TicTacToeBoard.SpaceState.O)
             {
                 symbols[x, y].GetComponent<SpriteRenderer>().sprite = oSprite;
+                symbols[x, y].GetComponent<SpriteRenderer>().color = oColorRef.color;
             }
             
         }

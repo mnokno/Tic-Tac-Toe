@@ -7,8 +7,13 @@ namespace TicTacToe.UI
 {
     public class UI : MonoBehaviour
     {
-        // Image that changes color when changes color is pressed
-        public Image image;
+        // Coaches the target image
+        private Image image;
+
+        private void Start()
+        {
+            image = this.GetComponent<Image>();
+        }
 
         /// <summary>
         /// Assigned to the restart button, start new game and swaps starting player

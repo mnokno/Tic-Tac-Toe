@@ -157,6 +157,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This option is used to test ai related to output data transfer between threads
+    /// </summary>
     public void MakeMoveUsing_GuessingAI()
     {
         TicTacToeBoard.LegalMove AImove = GuessingAI.Guess(ticTacToeBoard.GetAllLegalMoves());
@@ -165,6 +168,9 @@ public class GameManager : MonoBehaviour
         isAIMoveCalculated = true;
     }
 
+    /// <summary>
+    /// This funacion caluclatest the best move without alpha beta
+    /// </summary>
     public void MakeMoveUsing_MiniMaxAI()
     {
         TicTacToeBoard.LegalMove AImove = MiniMaxAI.FindBestMoveUsingMiniMax(ticTacToeBoard, AIX);
